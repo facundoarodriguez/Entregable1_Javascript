@@ -1,5 +1,3 @@
-preentregable1();
-
 function preentregable1() {
     let i = 0
     let inicio = confirm ('Primero debe registrarse para iniciar el cuestionario.')
