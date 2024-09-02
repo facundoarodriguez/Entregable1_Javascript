@@ -1,4 +1,64 @@
-function preentregable1() {
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+const registerButton = document.getElementById('register-button');
+const loginButton = document.getElementById('login-button');
+const notification = document.getElementById('notification');
+
+// Función para mostrar notificación
+function showNotification(message, type = '') {
+    notification.textContent = message;
+    notification.className = `notification visible ${type}`;
+    
+    setTimeout(() => {
+        notification.className = 'notification hidden';
+    }, 3000);
+}
+
+// Función de registro
+registerButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    const user = username.value;
+    const pass = password.value;
+    
+    if (user && pass) {
+        localStorage.setItem('username', user);
+        localStorage.setItem('password', pass);
+        showNotification('Registro exitoso! Ahora puedes iniciar sesión.', 'success');
+    } else {
+        showNotification('Por favor ingresa un nombre de usuario y una contraseña.');
+    }
+});
+
+// Función de inicio de sesión
+loginButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+    
+    const inputUsername = username.value;
+    const inputPassword = password.value;
+    
+    if (inputUsername === storedUsername && inputPassword === storedPassword) {
+        showNotification('Inicio de sesión exitoso!', 'success');
+        setTimeout(() => {
+            window.location.href = 'pages/market.html';
+        }, 1000);
+    } else {
+        showNotification('Nombre de usuario o contraseña incorrectos.');
+    }
+});
+
+// Animación del cursor (opcional)
+const cursor = document.getElementById('cursor');
+setInterval(() => {
+    cursor.classList.toggle('visible');
+}, 500);
+
+
+
+/* function preentregable1() {
     let i = 0
     let inicio = confirm ('Primero debe registrarse para iniciar el cuestionario.')
         if (inicio == true) {
@@ -159,4 +219,4 @@ function preentregable1() {
             usuario.sort((a, b)=> b.score - a.score);
             console.table(usuario)
         }
-}
+} */

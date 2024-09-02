@@ -1,7 +1,18 @@
 *{
     padding: 0;
     margin: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
+
+/* Banner de inicio */
+#inicio-banner {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    box-sizing: border-box;
+}
+
 
 /* login body */
 .loginbody{
@@ -66,6 +77,7 @@
     cursor: pointer;
     font-size: 20px;
     transition: all 0.3s;
+    margin-bottom: 5px;
 }
 
 .loginbody form button:hover{
@@ -74,13 +86,15 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #1A1A1A;
+    background-color: #273746;
 }
 
 nav {
     background-color: #000;
     padding: 1em;
     text-align: center;
+    position: sticky;
+    top: 0;
 }
 
 nav ul {
@@ -110,69 +124,48 @@ nav ul li a:hover {
 }
 
 .section1{
-    position: relative;
     text-align: center;
+    background-color: #babec0;
 }
 
 .section1 h1{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-}
-
-@keyframes fadeIn{
-    to{
-        opacity: 1;
-    }
-}
-
-.section1 img{
-    width: 100vw;
-    height: auto;
-}
-.section2 {
-    display: flex;
-    background-color: #1A1A1A;
-    color: #fff;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 100vw;
-}
-
-.section2 div {
-    background-color: #333333;
-    border-radius: 10px;
-    margin-left: 15px;
-    margin-right: 15px;
-    padding: 20px;
-    text-align: center;
-}
-
-.section2 div p{
-    margin-top: 2rem;
-}
-
-.boton1{
-    margin-top: 1rem;
-}
-
-.boton1 a{
-    text-decoration: none;
-    background-color: #000;
-    color: #333333;
-    border-radius: 5px;
+    font-size: 1.3rem;
     padding: 10px;
-    margin-top: 30px;
-    transition: color ease-in 0.3s;
 }
 
-.boton1 a:hover {
-    color: #fff;
+.section1 p{
+    padding: 10px;
 }
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.visible {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
 
 /* Pagina de Market */
 
@@ -182,18 +175,32 @@ nav ul li a:hover {
     justify-content: center;
 }
 
+.contenedorMarket .product .add-to-cart{
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color:#273746;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: color 0.3s ease, transform 0.3s;
+}
+
+.contenedorMarket .product .add-to-cart:hover{
+    transform: scale(1.2);
+}
+
 .contenedorMarket div{
     text-align: center;
     width: 450px;
     padding: 3rem 0 3rem 0;
     margin: 1rem;
     border-radius: 5px;
-    background-color: #2c2c2c;
+    background-image: url('images/backgr.png');
     transition: all 0.3s;
 }
 
 .contenedorMarket div:hover{
-    background-color:#414141;
     box-shadow: 0 10px 20px black;
 }
 
@@ -204,13 +211,13 @@ nav ul li a:hover {
 
 .contenedorMarket div h3{
     margin-top: 2rem;
-    color: #fff;
+    color: black;
 }
 
 .contenedorMarket div p{
     margin-top: 1rem;
     margin-bottom: 2rem;
-    color: #fff;
+    color: black;
 }
 
 .contenedorMarket div a{
@@ -224,4 +231,68 @@ nav ul li a:hover {
 
 .contenedorMarket div a:hover{
     background-color: #0F0F0F;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart-items li {
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight:600;
+}
+
+#cart p{
+    font-weight: 800;
+}
+
+#cart button{
+    color: white;
+    border: none;
+    background-color:#273746;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#cart-items button {
+    background-color: rgb(43, 43, 43);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 14px;
+    transition: color 0.3s ease, transform 0.3s;
+}
+
+#cart button:hover{
+    transform: scale(1.2);
+}
+
+#cart-items button:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+.desvanecer{
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.notification2 {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: yellow;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-weight: bold;
 }
